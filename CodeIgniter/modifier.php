@@ -1,3 +1,15 @@
+<?php 
+    if (isset($this->session->login) && isset($this->session->role) && $this->session->role == "administrateur") 
+    {
+        echo '<h6 style="margin-left:20px"> Bonjour ',$this->session->role, ' ', $this->session->login, '<br> Vous êtes connecté ! </h6>' ;
+    } 
+    else    // Pas connecté
+    {  
+        redirect("Users/login");
+    }
+?>
+
+
 <!-- Pour afficher toutes les erreurs en une seule fois via la fonction validation_errors(): -->
 <?php echo validation_errors(); ?>  
 
@@ -21,14 +33,14 @@
     </head>
 
 
+    
+    <!-- Formulaire d'modification -->
+
+    <!-- Remarquez la ligne "echo form_open()" qui génère le code suivant: <form action="http://localhost/ci/index.php/produits/modifier" method="post">.
+    La valeur de l'attribut "action" a été renseignée automatiquement et renvoie le formulaire vers le même contrôleur/méthode qui a affiché 
+    la vue, ce qui signifie que la même méthode sera utilisée pour afficher et traiter le formulaire.
+    Il est très important d'utiliser la fonction form_open() car elle applique des mécanismes de sécurité contre les failles XSS et CSRF -->
     <body>
-        <!-- Formulaire d'modification -->
-
-        <!-- Remarquez la ligne "echo form_open()" qui génère le code suivant: <form action="http://localhost/ci/index.php/produits/modifier" method="post">.
-        La valeur de l'attribut "action" a été renseignée automatiquement et renvoie le formulaire vers le même contrôleur/méthode qui a affiché 
-        la vue, ce qui signifie que la même méthode sera utilisée pour afficher et traiter le formulaire.
-        Il est très important d'utiliser la fonction form_open() car elle applique des mécanismes de sécurité contre les failles XSS et CSRF -->
-
         <div class="container"  style="margin:50px 0 60px 220px">
             <?php echo form_open(); ?> 
 
@@ -123,8 +135,8 @@
                 <button style="margin-left:50px; padding:10px 30px; border-radius:10px; background-color:red; color:white"> Annuler </button> 
             </a> 
 
-            <a href="script_deconnexion.php"> 
-                <button style="margin-left:50px; padding:10px 10px; border-radius:10px; background-color:blue; color:white"> Déconnexion </button> 
+            <a href="<?php echo site_url("users/deconnexion");?>"> 
+                <button style="margin:0 0 10px 50px; padding:10px 10px; border-radius:10px; background-color:blue; color:white"> Déconnexion </button> 
             </a> 
         </div>
 

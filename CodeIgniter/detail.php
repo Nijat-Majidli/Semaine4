@@ -1,3 +1,16 @@
+<?php 
+    if (isset($this->session->login) && isset($this->session->role) && $this->session->role == "administrateur") 
+    {
+        echo '<h6 style="margin-left:20px"> Bonjour ',$this->session->role, ' ', $this->session->login, '<br> Vous êtes connecté ! </h6>' ;
+    } 
+    else    // Pas connecté
+    {  
+        redirect("Users/login");
+    }
+?>
+
+
+
 <!-- Pour afficher toutes les erreurs en une seule fois via la fonction validation_errors(): -->
 <?php echo validation_errors(); ?>  
 
@@ -32,7 +45,7 @@
         <div class="container"  style="margin:50px 0 60px 220px">
             <?php echo form_open(); ?> 
 
-                <input type="hidden" name="pro_id" value="<?php echo $produit->pro_id; ?>">   <!-- Ici on récupere la clé 'produit' (sous forme objet $produit) du tableau $aView qui se trouvent dans méthode modifier() dans controlleur Produits.php -->
+                <input type="hidden" name="pro_id" value="<?php echo $produit->pro_id; ?>">   <!-- Ici on récupere la clé 'produit' (sous forme objet $produit) du tableau $aView qui se trouvent dans méthode detail() dans controlleur Produits.php -->
 
                 <div class="form-group">
                     <img src="<?php echo base_url("assets/photos/". $produit->pro_id .".". $produit->pro_photo); ?>"  alt="photo"  title="photo"  class="img-fluid"  style="width:600px; padding-left:300px"> 
@@ -110,6 +123,7 @@
             </div>
             
             <!-- Bouton RETOUR  --> 
+            <!-- On utilise la fonction site_url() pour écrire un lien -->
             <a href="<?php echo site_url("produits/liste");?>">   
                 <button style="margin-left:40px; padding:10px 35px; border-radius:10px; background-color:grey; color:white"> Retour </button> 
             </a> 
@@ -121,8 +135,8 @@
             </a> 
 
             <!-- Bouton DECONNEXION -->
-            <a href="script_deconnexion.php"> 
-                <button style="margin-left:40px; padding:10px 10px; border-radius:10px; background-color:blue; color:white"> Déconnexion </button> 
+            <a href="<?php echo site_url("users/deconnexion");?>"> 
+                <button style="margin:0 0 10px 20px; padding:10px 10px; border-radius:10px; background-color:blue; color:white"> Déconnexion </button> 
             </a> 
         </div>
 

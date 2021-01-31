@@ -1,3 +1,15 @@
+<?php 
+    if (isset($this->session->login) && isset($this->session->role)) 
+    {
+        echo '<h6 style="margin-left:20px"> Bonjour ',$this->session->role, ' ', $this->session->login, '<br> Vous êtes connecté ! </h6>' ;
+    } 
+    else    // Pas connecté
+    {  
+        redirect("Users/login");
+    }
+?>
+
+
 <!-- Pour afficher toutes les erreurs en une seule fois via la fonction validation_errors(): -->
 <?php echo validation_errors(); ?>  
 
@@ -26,13 +38,15 @@
         <div class="container"> 
             <div class="table-responsive" style="margin-top:20px;"> 
                 <!-- AJOUTER button -->
-                <a href="<?php echo site_url("produits/ajouter");?>">   <!-- On utilise la fonction site_url() pour écrire un lien -->
-                    <button style="float:left; margin:0 0 10px 840px; padding:10px 30px; border-radius:10px; background-color:green; color:white"> Ajouter </button> 
-                </a> 
-                <!-- DECONNEXION button -->
-                <a href="script_deconnexion.php"> 
-                    <button style="margin:0 0 10px 20px; padding:10px 10px; border-radius:10px; background-color:blue; color:white"> Déconnexion </button> 
-                </a> 
+                <div style="margin-bottom:10px">
+                    <a href="<?php echo site_url("produits/ajouter");?>">   <!-- On utilise la fonction site_url() pour écrire un lien -->
+                        <button style="float:left; margin:0 0 10px 840px; padding:10px 30px; border-radius:10px; background-color:green; color:white"> Ajouter </button> 
+                    </a> 
+                    <!-- DECONNEXION button -->
+                    <a href="<?php echo site_url("users/deconnexion");?>"> 
+                        <button style="margin:0 0 10px 20px; padding:10px 10px; border-radius:10px; background-color:blue; color:white"> Déconnexion </button> 
+                    </a> 
+                </div>
                 <!-- Table of products -->
                 <table class="table table-bordered table-striped"> 
                     <thead class="thead-light" >
@@ -53,7 +67,7 @@
                     <tbody>  
                         <?php                                 
                         foreach ($produits as $row)   // Ici on récupere la clé 'liste_produits' du tableau $aView qui se trouvent dans méthode liste() dans controlleur Produits.php   
-                        {                                   // Ici la clé est transformée en variable, on écrit $liste_produits et non pas echo $aView["liste_produits"]
+                        {                             // Ici la clé est transformée en variable, on écrit $produits et non pas echo $aView["produits"]
                         ?>
                             <tr>
                                 <td class="table-warning"  style="width:130px">

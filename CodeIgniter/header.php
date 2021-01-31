@@ -23,7 +23,7 @@
                 <!-- Logo Jarditou -->
                 <div class="row">
                     <div class="col-3 p-3 d-none d-sm-none d-md-block">  
-                        <img src="<?php echo base_url("assets/images/jarditou_logo.jpg"); ?>" alt="logo" title="photo" class="img-fluid"> 
+                        <img src="<?php echo base_url("assets/photos/jarditou_logo.jpg"); ?>" alt="logo" title="photo" class="img-fluid"> 
                     </div>
                     <div class="col-9 d-none d-sm-none d-md-block">  
                         <h1 class="text-right px-5 py-3"> <b>La qualité depuis 70 ans</b> </h1>
@@ -38,14 +38,14 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul class="col-12 navbar-nav mr-auto mt-2 mt-lg-0 nav justify-content-center" style="font-size: xx-large">
-                                <li class="nav-item" style="margin-left: 50px;">
-                                <a class="nav-link" href="acceuil.php"> Acceuil <span class="sr-only">(current)</span> </a>
+                                <li class="nav-item"  style="margin-left: 50px;">
+                                    <a class="nav-link"  href="<?php echo site_url("produits/acceuil");?>"> Acceuil <span class="sr-only">(current)</span> </a>
                                 </li>
-                                <li class="nav-item" style="margin-left: 50px;">
-                                <a class="nav-link" href="index.php"> Tableau </a>
+                                <li class="nav-item"  style="margin-left: 50px;">
+                                    <a class="nav-link"  href="<?php echo site_url("produits/liste");?>"> Tableau </a>
                                 </li>
-                                <li class="nav-item" style="margin-left: 50px;">
-                                <a class="nav-link"> Contact </a>    <!-- Ajouter href="contact.php" dans la balise <a> pour activer page Contact -->
+                                <li class="nav-item"  style="margin-left: 50px;">
+                                    <a class="nav-link"  href="<?php echo site_url("users/contact");?>"> Contact </a>    
                                 </li>
                             </ul>
                         </div>
@@ -53,7 +53,7 @@
                 <!-- Image "Promotion sr lames de terrase" -->
                 <div class="row"  style="margin:20px 0 20px 0">
                     <div class="col-12">
-                        <img src="<?php echo base_url("assets/images/promotion.jpg"); ?>" alt="promotion" title="photo" class="img-fluid w-100"> 
+                        <img src="<?php echo base_url("assets/photos/promotion.jpg"); ?>" alt="promotion" title="photo" class="img-fluid w-100"> 
                     </div>
                 </div>
             </header>
